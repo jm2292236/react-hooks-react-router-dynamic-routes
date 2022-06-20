@@ -7,11 +7,15 @@ function MoviesPage({ movies }) {
     // useRouteMatch returns a special object with information about
     // the currently matched route
     const match = useRouteMatch();
-    console.log({match});
 
     return (
         <div>
             <MoviesList movies={movies} />
+
+            {/* This is only useful when the user have not selected a movie yet */}
+            <Route exact path={match.url}>
+                <h3>Choose a movie from the list above</h3>
+            </Route>
 
             {/* 
                 we can use the current URL from the `match` object as part of the path;
